@@ -1,5 +1,7 @@
 # Enterprise Resource Planning System
 
+**Live Preview:** [https://kaif-erp.vercel.app/](https://kaif-erp.vercel.app/)
+
 A modern, high-density ERP system designed for retail and logistics operations. Built to handle point-of-sale (POS), multi-warehouse inventory, CRM, financial analytics, and comprehensive audit logging.
 
 ## Tech Stack
@@ -63,6 +65,12 @@ This project is fully configured for Vercel.
 - **Server-Side Security:** Sensitive operations (like fetching daily reports or managing user roles) are securely gated behind server functions that verify the caller's IP, rate limit requests, and validate Supabase JWTs.
 - **Error Boundaries:** The application implements robust React Error Boundaries combined with a custom telemetry reporter for unhandled exceptions.
 - **PWA Ready:** The system operates offline via a registered Service Worker caching essential static assets.
+
+## License & Copyright
+
+**© 2026 Sheikh Kaif Sadiq. All Rights Reserved.**
+
+This repository and its source code are strictly proprietary and confidential. No part of this repository may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the owner. You may view the code for educational purposes, but you may not copy, fork, modify, or use it for any commercial or personal project.
 
 ---
 *Developed by Sheikh Kaif Sadiq*

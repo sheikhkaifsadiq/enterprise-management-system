@@ -6,9 +6,14 @@ const LOVABLE_CLOUD_PUBLISHABLE_KEY = "sb_publishable_h79CN10Gwwyv4IX9FLsaWw_E7W
 const LOVABLE_CLOUD_PROJECT_ID = "dthfndbduiclposwocux";
 
 export default defineConfig({
-  nitro: true,
+  nitro: {
+    preset: "vercel"
+  },
   tanstackStart: {
-    server: { entry: "server" },
+    server: {
+      entry: "server",
+      preset: "vercel"
+    },
   },
   vite: {
     define: {

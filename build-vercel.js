@@ -44,10 +44,11 @@ const entrypoint = files.find(f => f === 'index.mjs' || f === 'server.mjs') || '
 
 // Create function config
 const vcConfigJson = {
-  runtime: "edge",
-  entrypoint: entrypoint
+  runtime: "nodejs20.x",
+  handler: entrypoint,
+  launcherType: "Nodejs"
 };
 fs.writeFileSync(path.join(vercelOutput, 'functions', 'index.func', '.vc-config.json'), JSON.stringify(vcConfigJson, null, 2));
-console.log(`Created .vc-config.json with entrypoint ${entrypoint}`);
+console.log(`Created .vc-config.json with handler ${entrypoint} (Node.js runtime)`);
 
 console.log("Vercel build output generation complete!");

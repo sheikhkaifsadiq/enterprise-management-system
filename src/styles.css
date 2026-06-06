@@ -1,0 +1,272 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Fira Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "DM Serif Display", "Cormorant Garamond", ui-serif, Georgia, serif;
+
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
+  --radius-2xl: 8px;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-surface: var(--surface);
+
+  /* Bespoke editorial palette (Linen & Navy) */
+  --color-parchment: #f0efeb;
+  --color-linen: #fff1e6;
+  --color-powder-petal: #eddcd2;
+  --color-soft-blush: #fde2e4;
+  --color-petal-frost: #fad2e1;
+  --color-alice-blue: #d6e2e9;
+  --color-pale-sky: #bcd4e6;
+  --color-powder-blue: #99c1de;
+  --color-mint-cream: #dbe7e4;
+  --color-light-cyan: #c5dedd;
+  --color-ink: #363329;
+  --color-navy: #2d597a;
+  --color-navy-deep: #1f3f57;
+}
+
+:root {
+  --radius: 3px;
+
+  /* Editorial Linen & Navy palette */
+  --background: #f0efeb;        /* parchment */
+  --surface:    #fff1e6;        /* linen */
+  --foreground: #363329;        /* ink */
+
+  --card: #ffffff;
+  --card-foreground: #363329;
+  --popover: #ffffff;
+  --popover-foreground: #363329;
+
+  --primary: #2d597a;           /* navy */
+  --primary-foreground: #fff1e6;
+  --secondary: #eddcd2;         /* powder petal */
+  --secondary-foreground: #2d597a;
+  --muted: #fff1e6;
+  --muted-foreground: #6b6657;
+  --accent: #d6e2e9;            /* alice blue */
+  --accent-foreground: #2d597a;
+
+  --destructive: #9b3137;
+  --destructive-foreground: #fff1e6;
+  --success: #3f6b4f;
+  --success-foreground: #fff1e6;
+  --warning: #b07a2b;
+  --warning-foreground: #fff1e6;
+
+  --border: rgba(54, 51, 41, 0.10);
+  --input:  rgba(54, 51, 41, 0.14);
+  --ring:   #2d597a;
+
+  --chart-1: #2d597a;
+  --chart-2: #99c1de;
+  --chart-3: #dbe7e4;
+  --chart-4: #fad2e1;
+  --chart-5: #eddcd2;
+
+  /* Sidebar — linen with navy ink */
+  --sidebar: #fff1e6;
+  --sidebar-foreground: #363329;
+  --sidebar-primary: #2d597a;
+  --sidebar-primary-foreground: #fff1e6;
+  --sidebar-accent: #eddcd2;
+  --sidebar-accent-foreground: #2d597a;
+  --sidebar-border: rgba(45, 89, 122, 0.14);
+  --sidebar-ring: #2d597a;
+}
+
+.dark {
+  /* Inverted editorial: navy canvas, warm linen ink */
+  --background: #1a2733;
+  --surface:    #22303d;
+  --foreground: #f0efeb;
+  --card: #22303d;
+  --card-foreground: #f0efeb;
+  --popover: #22303d;
+  --popover-foreground: #f0efeb;
+  --primary: #99c1de;
+  --primary-foreground: #1a2733;
+  --secondary: #2d3f50;
+  --secondary-foreground: #f0efeb;
+  --muted: #2d3f50;
+  --muted-foreground: #a8b3bf;
+  --accent: #2d3f50;
+  --accent-foreground: #f0efeb;
+  --destructive: #c97078;
+  --destructive-foreground: #1a2733;
+  --success: #8db89a;
+  --success-foreground: #1a2733;
+  --warning: #d9b27c;
+  --warning-foreground: #1a2733;
+  --border: rgba(240, 239, 235, 0.10);
+  --input: rgba(240, 239, 235, 0.14);
+  --ring: #99c1de;
+  --chart-1: #99c1de;
+  --chart-2: #fad2e1;
+  --chart-3: #dbe7e4;
+  --chart-4: #eddcd2;
+  --chart-5: #c5dedd;
+  --sidebar: #22303d;
+  --sidebar-foreground: #f0efeb;
+  --sidebar-primary: #99c1de;
+  --sidebar-primary-foreground: #1a2733;
+  --sidebar-accent: #2d3f50;
+  --sidebar-accent-foreground: #f0efeb;
+  --sidebar-border: rgba(240, 239, 235, 0.10);
+  --sidebar-ring: #99c1de;
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html, body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* Editorial serif headings with refined tracking */
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    color: var(--color-foreground);
+  }
+  h1 { line-height: 1.05; }
+  h2 { line-height: 1.1; }
+
+  /* All-caps eyebrow style */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-weight: 600;
+    color: color-mix(in oklab, var(--color-navy) 70%, transparent);
+  }
+}
+
+/* Editorial KPI numeral — used by dashboard tiles */
+@utility erp-numeral {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+@utility erp-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-weight: 600;
+}
+
+/* High-density data table utilities */
+@utility erp-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+@utility erp-th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--color-card);
+  text-align: left;
+  font-weight: 600;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--color-navy) 70%, transparent);
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+@utility erp-td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-foreground);
+  font-weight: 400;
+  white-space: nowrap;
+}
+@utility erp-row-hover {
+  transition: background-color .14s ease;
+  &:hover {
+    background: color-mix(in oklab, var(--color-linen) 70%, transparent);
+  }
+}
+
+/* Custom thin scrollbars (sidebar + scroll areas) */
+@utility erp-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklab, currentColor 22%, transparent) transparent;
+  &::-webkit-scrollbar { width: 6px; height: 6px; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, currentColor 18%, transparent);
+    border-radius: 9999px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in oklab, currentColor 32%, transparent);
+  }
+}
+
+/* Hide sidebar scrollbar entirely but keep scrollability */
+[data-sidebar="sidebar"], [data-sidebar="content"] {
+  scrollbar-width: none;
+}
+[data-sidebar="sidebar"]::-webkit-scrollbar,
+[data-sidebar="content"]::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}

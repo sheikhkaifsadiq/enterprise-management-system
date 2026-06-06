@@ -44,7 +44,7 @@ const entrypoint = files.find(f => f === 'index.mjs' || f === 'server.mjs') || '
 
 // Create function config
 const vcConfigJson = {
-  runtime: "nodejs20.x",
+  runtime: "nodejs22.x",
   handler: entrypoint,
   launcherType: "Nodejs"
 };

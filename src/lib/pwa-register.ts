@@ -1,4 +1,4 @@
-// Guarded service worker registration — refuses to run in dev / Lovable preview / iframe.
+// Guarded service worker registration — refuses to run in dev / preview / iframe.
 const SW_URL = "/sw.js";
 
 function isUnsafeContext(): boolean {
@@ -12,13 +12,7 @@ function isUnsafeContext(): boolean {
   const host = window.location.hostname;
   if (
     host.startsWith("id-preview--") ||
-    host.startsWith("preview--") ||
-    host === "lovableproject.com" ||
-    host.endsWith(".lovableproject.com") ||
-    host === "lovableproject-dev.com" ||
-    host.endsWith(".lovableproject-dev.com") ||
-    host === "beta.lovable.dev" ||
-    host.endsWith(".beta.lovable.dev")
+    host.startsWith("preview--")
   ) return true;
   if (new URLSearchParams(window.location.search).get("sw") === "off") return true;
   return false;

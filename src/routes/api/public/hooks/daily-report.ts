@@ -40,13 +40,13 @@ export const Route = createFileRoute("/api/public/hooks/daily-report")({
         };
 
         // Optional: email via Resend connector if configured
-        const lovableKey = process.env.LOVABLE_API_KEY;
+        // Optional: email via Resend if configured
         const resendKey = process.env.RESEND_API_KEY;
         const recipients = (process.env.REPORT_RECIPIENTS ?? "").split(",").map((s) => s.trim()).filter(Boolean);
 
         let emailStatus: "skipped" | "sent" | "failed" = "skipped";
         let emailError: string | undefined;
-        if (lovableKey && resendKey && recipients.length > 0) {
+        if (resendKey && recipients.length > 0) {
           try {
             const html = `
               <h2 style="font-family:system-ui;margin:0 0 8px">ERP Daily Report</h2>
@@ -61,12 +61,11 @@ export const Route = createFileRoute("/api/public/hooks/daily-report")({
               <ul style="font-family:system-ui;font-size:13px;color:#334155">
                 ${(report.low_stock.map((p) => `<li>${p.name} — ${p.stock}</li>`).join("") || "<li>None 🎉</li>")}
               </ul>`;
-            const resp = await fetch("https://connector-gateway.lovable.dev/resend/emails", {
+            const resp = await fetch("https://api.resend.com/emails", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${lovableKey}`,
-                "X-Connection-Api-Key": resendKey,
+                Authorization: `Bearer ${resendKey}`,
               },
               body: JSON.stringify({
                 from: "ERP Reports <onboarding@resend.dev>",

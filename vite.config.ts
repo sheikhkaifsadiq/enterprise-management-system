@@ -7,12 +7,15 @@ const LOVABLE_CLOUD_PROJECT_ID = "dthfndbduiclposwocux";
 
 export default defineConfig({
   nitro: {
-    preset: "vercel"
+    preset: "static",
+    prerender: {
+      routes: ['/']
+    }
   },
   tanstackStart: {
     server: {
       entry: "server",
-      preset: "vercel"
+      preset: "static"
     },
   },
   vite: {

@@ -6,6 +6,10 @@ const LOVABLE_CLOUD_PUBLISHABLE_KEY = "sb_publishable_h79CN10Gwwyv4IX9FLsaWw_E7W
 const LOVABLE_CLOUD_PROJECT_ID = "dthfndbduiclposwocux";
 
 export default defineConfig({
+  nitro: true,
+  tanstackStart: {
+    server: { entry: "server" },
+  },
   vite: {
     define: {
       "import.meta.env.VITE_SUPABASE_URL": JSON.stringify(process.env.VITE_SUPABASE_URL ?? process.env.SUPABASE_URL ?? LOVABLE_CLOUD_URL),

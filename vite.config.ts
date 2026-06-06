@@ -15,6 +15,7 @@ export default defineConfig({
       "import.meta.env.VITE_SUPABASE_URL": JSON.stringify(process.env.VITE_SUPABASE_URL ?? process.env.SUPABASE_URL ?? LOVABLE_CLOUD_URL),
       "import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY": JSON.stringify(process.env.VITE_SUPABASE_PUBLISHABLE_KEY ?? process.env.SUPABASE_PUBLISHABLE_KEY ?? LOVABLE_CLOUD_PUBLISHABLE_KEY),
       "import.meta.env.VITE_SUPABASE_PROJECT_ID": JSON.stringify(process.env.VITE_SUPABASE_PROJECT_ID ?? process.env.SUPABASE_PROJECT_ID ?? LOVABLE_CLOUD_PROJECT_ID),
+      "process.env.PEPPER_SECRET": JSON.stringify(process.env.PEPPER_SECRET),
     },
     plugins: [
       VitePWA({

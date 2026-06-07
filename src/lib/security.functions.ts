@@ -55,3 +55,8 @@ export const checkIpBlocked = createServerFn({ method: "GET" }).handler(async ()
     .from("blocked_ips").select("ip").eq("ip", ip).maybeSingle();
   return { ip, blocked: !!data };
 });
+
+/** Ping the server to prevent Vercel Serverless Function from cold-starting */
+export const keepAlive = createServerFn({ method: "GET" }).handler(async () => {
+  return { timestamp: Date.now(), status: "warm" };
+});

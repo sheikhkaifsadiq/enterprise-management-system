@@ -15,6 +15,8 @@ import { Toaster } from "@/components/ui/sonner";
 import { registerPWA } from "@/lib/pwa-register";
 import { supabase } from "@/integrations/supabase/client";
 import { hasSupabaseBrowserConfig } from "@/lib/supabase-config";
+import { useServerFn } from "@tanstack/react-start";
+import { keepAlive } from "@/lib/security.functions";
 
 const appLinks = [
   { rel: "stylesheet", href: appCss },
@@ -116,16 +118,30 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
+  const pingServer = useServerFn(keepAlive);
+
   useEffect(() => {
     registerPWA();
-    if (!hasSupabaseBrowserConfig()) return;
+
+    // Heartbeat to keep Vercel Serverless Function warm while the app is open
+    // Vercel spins down functions aggressively. Pinging every 5 minutes (300,000ms)
+    const heartbeat = setInterval(() => {
+      pingServer().catch(() => {}); // silent catch
+    }, 300000);
+
+    if (!hasSupabaseBrowserConfig()) return () => clearInterval(heartbeat);
+    
     const { data: sub } = supabase.auth.onAuthStateChange((event) => {
       if (event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
       router.invalidate();
       if (event !== "SIGNED_OUT") queryClient.invalidateQueries();
     });
-    return () => sub.subscription.unsubscribe();
-  }, [router, queryClient]);
+    
+    return () => {
+      clearInterval(heartbeat);
+      sub.subscription.unsubscribe();
+    };
+  }, [router, queryClient, pingServer]);
 
   return (
     <QueryClientProvider client={queryClient}>
